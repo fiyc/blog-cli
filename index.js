@@ -17,10 +17,11 @@ programe.command('clean')
     .action(param => {
         console.log('begin clean');
     })
-    
+
 
 programe.command('build')
     .alias('b')
+    .option('-f', "target floder")
     .description('build static html files')
     .action(param => {
         console.log('begin build')

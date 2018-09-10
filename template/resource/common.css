@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.font-25{
+    font-size: 25px;
+}
