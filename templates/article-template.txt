@@ -1,0 +1,12 @@
+<html>
+<meta charset="utf-8" />
+<title>{{title}}</title>
+<link rel="stylesheet" href="../resource/common.css" type="text/css" />
+<link rel="stylesheet" href="../resource/article.css" type="text/css" />
+
+<body>
+    <div class="main-container">
+        {{{htmlContent}}}
+    </div>
+</body>
+</html>

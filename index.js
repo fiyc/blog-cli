@@ -7,16 +7,16 @@
     - 
 */
 
-let programe = require('commander')
+let programe = require('commander');
+let bm = require('./modules/build-module');
+let path = require('path');
 
 programe.version('1.0.0');
 
 programe.command('clean')
     .alias('c')
     .description('clean build')
-    .action(param => {
-        console.log('begin clean');
-    })
+    .action(bm.clean)
 
 
 programe.command('build')
@@ -24,7 +24,9 @@ programe.command('build')
     .option('-f', "target floder")
     .description('build static html files')
     .action(param => {
-        console.log('begin build')
+        let absolutePath = path.resolve(param);
+        // console.log(absolutePath);
+        bm.build(absolutePath);
     })
 
 programe.command('push')
