@@ -9,6 +9,12 @@
 let fs = require('fs');
 let path = require('path');
 let md = require('marked');
+md.setOptions({
+    highlight: function (code) {
+        return require('highlight.js').highlightAuto(code).value
+    }
+})
+
 let h = require('handlebars');
 /**
  * 遍历目录, 加载指定后缀的文件 
@@ -203,6 +209,9 @@ let build = function (targetPath) {
     });
 
     let renderJSPath = path.join(__dirname, `../build/resource/render.js`);
+    fileInfos = fileInfos.sort(function(a, b){
+        
+    });
     compareTemplateAndSave(renderJSPath, { files: fileInfos }, "render-template.txt");
 }
 
