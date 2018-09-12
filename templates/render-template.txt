@@ -19,6 +19,13 @@ function init() {
         {{/each}}
     ];
 
+    data = data.sort(function(a, b){
+        let aDate = a.date ? new Date(a.date) : new Date();
+        let bDate = b.date ? new Date(b.date) : new Date();
+
+        return bDate.getTime() - aDate.getTime();
+    });
+
 
     let itemListTemplate = function (title, url, date) {
         let listItem = `<div class="list-item">
