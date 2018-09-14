@@ -1,0 +1,71 @@
+/**
+* @Author: fiyc
+* @Date : 2018-09-10 13:34
+* @FileName : render.js
+* @Description : 
+    - 模板渲染以及数据脚本
+*/
+
+function init() {
+    let listDOM = document.getElementById('list');
+    let searchInput = document.getElementById('search-input');
+    let data = [
+        {{#each files}}
+        {
+            title: "{{title}}",
+            url: "article/{{name}}.html",
+            date: "{{date}}"
+        },
+        {{/each}}
+    ];
+
+    data = data.sort(function(a, b){
+        let aDate = a.date ? new Date(a.date) : new Date();
+        let bDate = b.date ? new Date(b.date) : new Date();
+
+        return bDate.getTime() - aDate.getTime();
+    });
+
+
+    let itemListTemplate = function (title, url, date) {
+        let listItem = `<div class="list-item">
+            <a class="list-link" href="${url}">${title} <span class="date"> ${date}</span></a>
+        </div>`;
+
+        return listItem;
+    }
+
+    let render = function(lists){
+        let content = "";
+        lists.forEach(item => {
+           content += itemListTemplate(item.title, item.url, item.date); 
+        });
+
+        listDOM.innerHTML= content;
+    }
+
+    render(data);
+
+    searchInput.addEventListener('keyup', function(){
+        let searchValue = searchInput.value;
+        if(!searchValue){
+            render(data);
+            return;
+        }
+
+        let searchMappings = [];
+        data.forEach(item => {
+            if(item.title.indexOf(searchValue) >= 0){
+                searchMappings.push(item);
+            }
+        });
+
+        // if(searchMappings.length === 0){
+        //     searchMappings = data;
+        // }
+
+        render(searchMappings);
+    });
+}
+
+init();
