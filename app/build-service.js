@@ -46,11 +46,15 @@ let build = function () {
 
     // 拷贝默认的css文件
     let indexCssPath = path.join(currentCWD, 'build/resource/style.css');
+    let indexMediaCssPath = path.join(currentCWD, 'build/resource/style_media.css');
     let commonCssPath = path.join(currentCWD, 'build/resource/common.css');
     let articleCssPath = path.join(currentCWD, 'build/resource/article.css');
+    let articleMediaCssPath = path.join(currentCWD, 'build/resource/article_media.css');
     compile({}, 'style-css-template.txt', indexCssPath);
+    compile({}, 'style-media-css-template.txt', indexMediaCssPath);
     compile({}, 'common-css-template.txt', commonCssPath);
     compile({}, 'article-css-template.txt', articleCssPath);
+    compile({}, 'article-media-css-template.txt', articleMediaCssPath);
 
     //编译首页
     let indexPath = path.join(currentCWD, 'build/index.html');
