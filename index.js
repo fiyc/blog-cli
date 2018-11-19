@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /**
 * @Author: fiyc
 * @Date : 2018-09-13 11:30
@@ -6,7 +8,6 @@
     - 入口文件
     - 设置命令行指令
 */
-
 let programeInfo = require('./package.json');
 let programe = require('commander');
 let control = require('./app/command-controller');
